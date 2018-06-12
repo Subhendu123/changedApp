@@ -1,0 +1,19 @@
+<div *ngIf="allUserDetails !== undefined && allUserDetails.length>0">
+<h2>ALL USER INFORMATION USER ENTERED</h2>
+<table class="table table-bordered">
+		<thead>
+			<th>Name</th>
+			<th>Age</th>
+			<th>Date Of Birth</th>
+			<th>Remove</th>
+		</thead>
+		<tbody>
+			<tr *ngFor="let userDetails of allUserDetails">
+				<td><display-component [displayName]="userDetails.name" class="success"></display-component></td>
+				<td><display-component [displayAge]="userDetails.age" class="success"></display-component></td>
+				<td><display-component [displayDob]="userDetails.dob" class="success"></display-component></td>
+				<td><!-- <a><i (click)="removeElement(userList.indexOf(userDetails))" class="glyphicon glyphicon-remove"></i></a> --></td>
+			</tr>
+		</tbody>
+	</table>
+	

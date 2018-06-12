@@ -1,0 +1,39 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<div class="row">
+	
+	<div class="col-md-4" *ngIf="userList === undefined || userList.length === 0">
+	<h2>Currently there are no users here</h2></div>
+	<div class="col-md-4" *ngIf="userList !== undefined && userList.length > 0">
+	<hello-world></hello-world>
+	<app-user-list-info [allUserDetails]="userList"></app-user-list-info>
+	<table class="table table-bordered">
+		<thead>
+			<th>Name</th>
+			<th>Age</th>
+			<th>Date Of Birth</th>
+			<th>Remove</th>
+		</thead>
+		<tbody>
+			<tr *ngFor="let userDetails of userList">
+				<td><display-component [displayName]="userDetails.name" class="success"></display-component></td>
+				<td><display-component [displayAge]="userDetails.age" class="success"></display-component></td>
+				<td><display-component [displayDob]="userDetails.dob" class="success"></display-component></td>
+				<td><a><i (click)="removeElement(userList.indexOf(userDetails))" class="glyphicon glyphicon-remove"></i></a></td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	<div class="col-md-4">
+	<form class="form-group">
+	<label>Name: </label> <input class="form-control"  name="name" #myName /><br>
+	<label>Age:  </label> <input class="form-control"  type="number" name="age" #myAge /><br>
+	<label>Date Of Birth:  </label> <input class="form-control"  type="date" name="dob" #myDob /><br>
+	<button class="btn btn-danger" (click)="addAndDisplay(myName,myAge,myDob)">Display</button>
+	</form>
+	</div>
+</div>
